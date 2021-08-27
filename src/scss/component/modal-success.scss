@@ -1,0 +1,41 @@
+@use '../variables' as *;
+@use '../mixins' as m;
+
+.modal-success {
+  text-align: center;
+  @include m.modal;
+  height: fit-content;
+
+  @include m.responsive-size(medium) {
+    padding: 5rem;
+  }
+
+  &__icon {
+    display: block;
+    margin: 0 auto;
+    width: 6rem;
+    height: 6rem;
+    background-color: $moderate-cyan;
+    border-radius: 50%;
+    display: grid;
+
+    i {
+      font-size: 2.5rem;
+      color: #fff;
+      align-self: center;
+    }
+  }
+
+  &__title {
+    font-size: 2.2rem;
+    margin-top: 3rem;
+  }
+
+  &__description {
+    margin: 3rem 0;
+  }
+
+  &__cta {
+    @include m.button(1.8rem, 4rem);
+  }
+}

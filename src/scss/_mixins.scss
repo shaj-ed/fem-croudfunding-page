@@ -1,0 +1,83 @@
+@use 'variables' as *;
+
+// Responsive breakpoints
+$breakpoints: (
+  "medium": 48rem,
+  "large": 62rem,
+  "xlarge": 75rem,
+  "xxlarge": 87.5rem,
+);
+
+@mixin responsive-size($size) {
+  $breakpoint-size: map-get($breakpoints, $size);
+
+  @media (min-width: $breakpoint-size) {
+    @content;
+  }
+}
+
+// Button
+@mixin button($size, $px) {
+  font-size: $size;
+  font-weight: 500;
+  color: #fff;
+  background-color: $moderate-cyan;
+  padding: 2rem $px;
+  border-radius: 5rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: $dark-gray;
+  }
+}
+
+// Common border padding border-radius
+@mixin card {
+  padding: 2.2rem;
+  border: 0.1rem solid #ddd;
+  border-radius: 1rem;
+}
+
+// Counts left
+@mixin count-left {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  @include responsive-size(medium) {
+    margin: 0;
+  }
+
+  &--count {
+    font-size: 2.8rem;
+    font-weight: 700;
+  }
+
+  &--text {
+    font-size: 1.4rem;
+    color: $moderate-cyan;
+    font-weight: 500;
+  }
+}
+
+// Modal postion
+@mixin modal {
+  display: none;
+  position: fixed;
+  width: 90%;
+  height: 80vh;
+  max-width: 85rem;
+  top: 15%;
+  left: 50%;
+  bottom: 10%;
+  transform: translateX(-50%);
+  overflow-y: scroll;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}

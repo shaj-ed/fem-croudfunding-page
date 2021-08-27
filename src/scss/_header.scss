@@ -1,0 +1,143 @@
+@use 'variables' as *;
+@use 'mixins' as m;
+
+.header {
+  width: 100%;
+  height: 37.5rem;
+  background: url("../images/image-hero-mobile.jpg") no-repeat center center /
+    cover;
+
+  @include m.responsive-size(medium) {
+    background-image: url("../images/image-hero-desktop.jpg");
+  }
+
+  &__inner {
+    width: 100%;
+    max-width: 111rem;
+    margin: 0 auto;
+    padding: 3.5rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__toggle-button {
+    width: 3.2rem;
+    height: 2rem;
+    background-color: transparent;
+    position: relative;
+    cursor: pointer;
+
+    @include m.responsive-size(medium) {
+      display: none;
+    }
+
+    span {
+      display: block;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      height: 0.4rem;
+      background-color: #fff;
+      transform: rotate(0deg);
+      transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+
+      &:nth-child(1) {
+        top: 0;
+      }
+
+      &:nth-child(2),
+      &:nth-child(3) {
+        top: 50%;
+      }
+
+      &:nth-child(4) {
+        top: 100%;
+      }
+    }
+  }
+
+  &__nav {
+    position: fixed;
+    top: 11rem;
+    left: 50%;
+    width: 90%;
+    transform: translateX(-250%);
+    background-color: #fff;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    z-index: 20;
+    transition: all 0.3s ease-in-out;
+
+    @include m.responsive-size(medium) {
+      position: initial;
+      transform: initial;
+      width: initial;
+      background-color: transparent;
+      flex-direction: row;
+      gap: 3rem;
+    }
+  }
+
+  &__link {
+    font-size: 2rem;
+    font-weight: 700;
+    color: $black;
+    padding: 3rem;
+
+    &:not(:last-of-type) {
+      border-bottom: 0.1rem solid rgba(#000000, 0.1);
+
+      @include m.responsive-size(medium) {
+        border-bottom: 0;
+      }
+    }
+
+    @include m.responsive-size(medium) {
+      padding: 0;
+      color: #fff;
+      font-weight: 500;
+      font-size: 1.7rem;
+
+      &:hover {
+        text-decoration: underline;
+        text-decoration-color: rgba(#fff, 0.4);
+      }
+    }
+  }
+}
+
+// Show menu
+body.show-menu {
+  .header__logo {
+    z-index: 100;
+  }
+
+  .header__nav {
+    transform: translateX(-50%);
+
+    @include m.responsive-size(medium) {
+      transform: initial;
+    }
+  }
+
+  .header__toggle-button {
+    z-index: 100;
+
+    span {
+      &:nth-child(1),
+      &:nth-child(4) {
+        opacity: 0;
+      }
+
+      &:nth-child(2) {
+        transform: rotate(45deg);
+      }
+
+      &:nth-child(3) {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}

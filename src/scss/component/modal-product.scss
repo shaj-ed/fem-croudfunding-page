@@ -1,0 +1,136 @@
+@use '../variables' as *;
+@use '../mixins' as m;
+
+.modal-product {
+  overflow: hidden;
+
+  @include m.card;
+
+  &.checked {
+    border: 0.1rem solid $dark-gray;
+  }
+
+  @include m.responsive-size(medium) {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+      "top-sec count-left"
+      "description description"
+      "selected selected";
+  }
+
+  &__out {
+    opacity: 0.4;
+  }
+
+  &__top {
+    @include m.responsive-size(medium) {
+      grid-area: top-sec;
+      margin: 0;
+    }
+  }
+
+  &__headline {
+    @include m.responsive-size(medium) {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+  }
+
+  &__left {
+    margin-top: 2rem;
+    @include m.count-left;
+
+    @include m.responsive-size(medium) {
+      grid-area: count-left;
+      justify-self: end;
+      margin-top: 0;
+    }
+  }
+
+  &__description {
+    @include m.responsive-size(medium) {
+      padding-left: 5rem;
+      grid-area: description;
+      margin-top: 2rem;
+    }
+  }
+
+  &__selected {
+    padding-top: 3rem;
+    text-align: center;
+    position: relative;
+    display: none;
+
+    &.show-select {
+      display: block;
+    }
+
+    @include m.responsive-size(medium) {
+      grid-area: selected;
+      text-align: left;
+      margin-top: 3rem;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 0.1rem;
+      background-color: #ddd;
+      top: 0;
+      left: -2.5rem;
+    }
+  }
+
+  &__amount {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+
+    @include m.responsive-size(medium) {
+      margin: 0;
+      gap: 2rem;
+    }
+  }
+
+  &__input {
+    position: relative;
+    padding: 2rem 5.5rem;
+    border: 0.1rem solid #ddd;
+    border-radius: 4rem;
+
+    input {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 4.5rem;
+      border: 0;
+      outline: 0;
+      background-color: transparent;
+      font-family: $font-stack;
+      font-size: 1.5rem;
+      color: $black;
+      font-weight: 700;
+    }
+
+    label {
+      position: absolute;
+      top: 50%;
+      left: 3rem;
+      transform: translateY(-50%);
+      font-size: 1.5rem;
+      color: $moderate-cyan;
+      font-weight: 500;
+    }
+  }
+
+  &__continue {
+    @include m.button(1.8rem, 3rem);
+  }
+}

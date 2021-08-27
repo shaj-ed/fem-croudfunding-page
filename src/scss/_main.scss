@@ -1,0 +1,25 @@
+@use 'variables' as *;
+@use 'mixins' as m;
+
+.main-content {
+  margin-top: -7rem;
+
+  @include m.responsive-size(medium) {
+    margin-top: -10rem;
+  }
+
+  section {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.about {
+  @include m.responsive-size(medium) {
+    padding: 5rem;
+  }
+
+  &__title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+}

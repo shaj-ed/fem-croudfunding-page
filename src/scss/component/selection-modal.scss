@@ -1,0 +1,36 @@
+@use '../variables' as *;
+@use '../mixins' as m;
+
+.selection-modal {
+  @include m.modal;
+
+  & > div {
+    margin-bottom: 2.5rem;
+  }
+
+  @include m.responsive-size(medium) {
+    padding: 5rem;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+
+  &__close {
+    background-color: transparent;
+    color: $moderate-cyan;
+    font-size: 2.2rem;
+    cursor: pointer;
+
+    &:hover {
+      color: $dark-cyan;
+    }
+  }
+
+  &__title {
+    font-size: 2rem;
+  }
+}

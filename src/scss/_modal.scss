@@ -1,0 +1,38 @@
+@use 'variables' as *;
+@use 'mixins' as m;
+
+.modal h3 {
+  cursor: pointer;
+
+  &:hover {
+    color: $moderate-cyan;
+  }
+}
+
+.no-reward {
+  margin-top: 2rem;
+
+  @include m.card;
+
+  p {
+    @include m.responsive-size(medium) {
+      padding-left: 5rem;
+    }
+  }
+
+  &__continue {
+    display: none;
+    margin-top: 2rem;
+    margin-left: auto;
+    @include m.button(1.8rem, 3rem);
+
+    &.show-button {
+      display: flex;
+    }
+  }
+}
+
+.show-modal {
+  display: block;
+  z-index: 100;
+}

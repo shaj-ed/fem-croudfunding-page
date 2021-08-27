@@ -1,0 +1,76 @@
+@use '../variables' as *;
+@use '../mixins' as m;
+
+.mastercraft {
+  text-align: center;
+
+  @include m.responsive-size(medium) {
+    padding: 3rem 5rem 5rem 5rem;
+  }
+
+  &__logo {
+    margin-top: -6rem;
+    margin-bottom: 3rem;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+
+    @include m.responsive-size(medium) {
+      font-size: 3rem;
+    }
+  }
+
+  &__description {
+    margin: 2rem 0 3rem 0;
+
+    @include m.responsive-size(medium) {
+      margin: 1.5rem 0 4rem 0;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &--cta {
+      @include m.button(1.8rem, 5rem);
+    }
+
+    &--toggle {
+      background-color: transparent;
+      cursor: pointer;
+
+      @include m.responsive-size(medium) {
+        display: flex;
+        align-items: center;
+        background-color: #ddd;
+        border-radius: 5rem;
+      }
+
+      svg.bookmarked circle {
+        fill: #222;
+      }
+
+      &:hover {
+        svg circle {
+          fill: $dark-gray;
+        }
+      }
+
+      span {
+        display: none;
+
+        @include m.responsive-size(medium) {
+          display: block;
+          font-size: 1.8rem;
+          font-weight: 500;
+          padding: 1.8rem 2.5rem;
+          color: $black;
+        }
+      }
+    }
+  }
+}
