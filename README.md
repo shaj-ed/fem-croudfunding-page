@@ -17,5 +17,5 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Frontend Mentor](https://your-solution-url.com)
-- Live Site URL: [Netlify](https://your-live-site-url.com)
+- Solution URL: [Frontend Mentor](https://www.frontendmentor.io/solutions/mobile-first-html5-css-vanillajs-es6-class-pSD8g9poo)
+- Live Site URL: [Netlify](https://fem-croudfunding-page.netlify.app/)
